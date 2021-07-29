@@ -1,17 +1,4 @@
 {
-	// Place your snippets for go here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
 	"Create CRUD Repository": {
 		"prefix": "rc",
 		"body": [
@@ -258,6 +245,40 @@
 			"}",
 			"func (u $2ServiceImpl) DeleteByID(ctx context.Context, id uuid.UUID) (*model.$1, error) {",
 			"\treturn u.repo.$1.DeleteByID(ctx, id)",
+			"}",
+		],
+	},
+	"Create REST CRUD Handler": {
+		"prefix": "arc",
+		"description": "Create REST CRUD Handler",
+		"body": [
+			"func New$1Route(delivery *Delivery) {",
+			"\t$2 := delivery.HTTP.Group(\"/$2\")",
+			"\t$2.Get(\"\", delivery.$1Index)",
+			"\t$2.Get(\"/:id\", delivery.$1Show)",
+			"\t$2.Post(\"\", delivery.$1Create)",
+			"\t$2.Patch(\"/:id\", delivery.$1Update)",
+			"\t$2.Delete(\"/:id\", delivery.$1Delete)",
+			"}",
+			"",
+			"func (d Delivery) $1Index(ctx *fiber.Ctx) error {",
+			"\treturn nil",
+			"}",
+			"",
+			"func (d Delivery) $1Show(ctx *fiber.Ctx) error {",
+			"\treturn nil",
+			"}",
+			"",
+			"func (d Delivery) $1Create(ctx *fiber.Ctx) error {",
+			"\treturn nil",
+			"}",
+			"",
+			"func (d Delivery) $1Update(ctx *fiber.Ctx) error {",
+			"\treturn nil",
+			"}",
+			"",
+			"func (d Delivery) $1Delete(ctx *fiber.Ctx) error {",
+			"\treturn nil",
 			"}",
 		],
 	},
